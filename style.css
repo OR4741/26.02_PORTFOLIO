@@ -470,6 +470,7 @@ a {
 
 .masonry-img {
     flex: 1;
+    min-width: 0;
     height: 450px;
     object-fit: cover;
     width: 100%;
@@ -697,15 +698,6 @@ a {
     .detail-mockups {
         grid-template-columns: 1fr;
     }
-    .mobile-mockup-wrapper {
-        margin-bottom: 40px;
-    }
-    .hero-title {
-        font-size: 4rem;
-    }
-}
-
-@media (max-width: 768px) {
     .profile-container {
         justify-content: center;
     }
@@ -730,17 +722,24 @@ a {
             "left"
             "right";
     }
+    .p1-left-img, .p1-right-item {
+        height: 300px;
+    }
+    .p1-right-box {
+        height: 260px;
+    }
     .split-mockup-grid {
         grid-template-columns: 1fr;
     }
     .mobile-mockup-wrapper {
+        margin-bottom: 40px;
         justify-content: center;
     }
     .masonry-style {
         flex-direction: column;
     }
     .hero-title {
-        font-size: clamp(2rem, 10vw, 3.5rem);
+        font-size: clamp(2rem, 10vw, 4rem);
         letter-spacing: 0.15em;
     }
     .square {
