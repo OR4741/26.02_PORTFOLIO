@@ -10,15 +10,36 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                // Optional: Stop observing once animated to keep it visible
-                // observer.unobserve(entry.target);
+                // Stop observing once animated to keep it visible
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    const targetElements = document.querySelectorAll('.observe-me');
+    const targetElements = document.querySelectorAll('.observe-me:not(.mobile-scroll)');
     targetElements.forEach(el => {
         observer.observe(el);
+    });
+
+    // Special Observer for very long mobile scroll images
+    const mobileScrollObserverOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.05 // Trigger much earlier
+    };
+    
+    const mobileScrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, mobileScrollObserverOptions);
+
+    const mobileScrollElements = document.querySelectorAll('.mobile-scroll');
+    mobileScrollElements.forEach(el => {
+        mobileScrollObserver.observe(el);
     });
 
     // Smooth Scrolling for anchor links
