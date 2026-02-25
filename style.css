@@ -218,12 +218,12 @@ a {
 /* CONTENTS INDEX */
 .contents-index {
     text-align: center;
-    padding: 100px 0;
+    padding: 180px 0;
     border-bottom: 1px solid var(--line-color);
 }
 
 .contents-index h2 {
-    font-size: 2.5rem; /* Increased from 2rem */
+    font-size: 2.2rem; /* Increased from 2rem */
     letter-spacing: 0.2em;
     margin-bottom: 50px;
     font-weight: 400;
@@ -233,12 +233,12 @@ a {
     list-style: none;
     display: inline-flex;
     flex-direction: column;
-    gap: 25px; /* Added gap proportional increase */
+    gap: 20px; /* Added gap proportional increase */
 }
 
 .index-list a {
-    font-size: 1.8rem; /* Increased from 2rem */
-    font-weight: 400;
+    font-size: 1.4rem; /* Increased from 2rem */
+    font-weight: 300;
     letter-spacing: 0.1em;
     color: var(--text-sub);
     transition: color var(--transition-speed) ease;
