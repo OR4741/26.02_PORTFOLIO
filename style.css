@@ -51,7 +51,7 @@ a {
 
 .mobile-mockup:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     background-color: #353545;
     color: #e5e7eb;
 }
@@ -59,7 +59,7 @@ a {
 /* Scroll Animation Classes */
 .observe-me {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(32px);
     transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
                 transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -152,7 +152,7 @@ a {
 .info-side {
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 48px;
     flex: 1;
     min-width: 300px;
 }
@@ -164,8 +164,8 @@ a {
     text-transform: uppercase;
     letter-spacing: 0.15em;
     font-weight: 600;
-    border-left: 3px solid var(--accent);
-    padding-left: 10px;
+    border-left: 4px solid var(--accent);
+    padding-left: 8px;
 }
 
 .education-list {
@@ -176,7 +176,7 @@ a {
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 4px;
 }
 
 .education-list .date {
@@ -191,8 +191,8 @@ a {
 
 .skills-icons {
     display: grid;
-    grid-template-columns: repeat(4, 50px);
-    gap: 10px;
+    grid-template-columns: repeat(4, 48px);
+    gap: 8px;
 }
 
 .skill-icon {
@@ -204,8 +204,8 @@ a {
     border-radius: 8px;
     font-size: 0.7rem;
     font-weight: 600;
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     border: 1px solid rgba(255,255,255,0.03);
 }
 
@@ -225,7 +225,7 @@ a {
 .contents-index h2 {
     font-size: 2.2rem; /* Increased from 2rem */
     letter-spacing: 0.2em;
-    margin-bottom: 50px;
+    margin-bottom: 48px;
     font-weight: 400;
 }
 
@@ -248,7 +248,7 @@ a {
 .index-list a::after {
     content: '';
     position: absolute;
-    bottom: -5px;
+    bottom: -4px;
     left: 0;
     width: 0;
     height: 1px;
@@ -287,7 +287,7 @@ a {
 }
 
 .project-item.no-margin-bottom {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .project-item.second-project {
@@ -299,20 +299,20 @@ a {
 }
 
 .project-desc {
-    flex: 0 0 350px;
+    flex: 0 0 352px;
 }
 
 .logo-icon {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    margin-bottom: 30px;
+    margin-bottom: 32px;
     font-size: 1.2rem;
 }
 
 .project-desc h3 {
     font-size: 1.5rem;
-    margin-bottom: 25px;
+    margin-bottom: 24px;
     font-weight: 400;
 }
 
@@ -320,13 +320,13 @@ a {
     color: var(--text-sub);
     font-size: 0.95rem;
     line-height: 1.8;
-    margin-bottom: 30px;
+    margin-bottom: 32px;
     font-weight: 300;
 }
 
 .project-date {
     display: inline-block;
-    padding: 5px 12px;
+    padding: 4px 12px;
     border: 1px solid var(--line-color);
     border-radius: 20px;
     font-size: 0.8rem;
@@ -450,7 +450,7 @@ a {
 .split-mockup-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 8px;
     width: 100%;
 }
 
@@ -462,16 +462,16 @@ a {
 /* Masonry */
 .masonry-style {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     max-width: 1400px;
-    margin: 0 auto 10px auto;
+    margin: 0 auto 8px auto;
     padding: 0 5%;
 }
 
 .masonry-img {
     flex: 1;
     min-width: 0;
-    height: 450px;
+    height: 448px;
     object-fit: cover;
     width: 100%;
 }
@@ -501,12 +501,12 @@ a {
 .mobile-column {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 32px;
 }
 
 .mobile-text h3 {
     font-size: 1.3rem;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     font-weight: 500;
 }
 
@@ -524,7 +524,7 @@ a {
 .mobile-mockup {
     width: 280px;
     height: 600px;
-    border-radius: 30px;
+    border-radius: 32px;
     border: 8px solid #4a4a5e;
     background-color: #fff;
     overflow: hidden;
@@ -557,7 +557,7 @@ a {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    gap: 32px;
     padding: 0 5%;
 }
 
@@ -566,7 +566,7 @@ a {
     margin: 100px auto 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 32px;
     padding: 0 5%;
 }
 
@@ -593,7 +593,7 @@ a {
     background-color: #000000;
     color: #ffffff;
     text-align: center;
-    padding: 150px 20px;
+    padding: 152px 20px;
     border-top: 1px solid var(--line-color);
 }
 
@@ -694,7 +694,7 @@ a {
 
 .top-btn:hover {
     background-color: #6366f1;
-    transform: translateY(-3px);
+    transform: translateY(-4px);
 }
 
 @media (max-width: 1024px) {
