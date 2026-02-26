@@ -190,9 +190,9 @@ a {
 }
 
 .skills-icons {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 50px);
     gap: 10px;
-    flex-wrap: wrap;
 }
 
 .skill-icon {
