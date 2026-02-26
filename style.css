@@ -235,6 +235,12 @@ a {
     font-weight: 400;
 }
 
+.education-list .sub-desc {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    font-weight: 300;
+}
+
 .skills-icons {
     display: grid;
     grid-template-columns: repeat(4, 48px);
