@@ -191,7 +191,7 @@ a {
 
 .skills-icons {
     display: grid;
-    grid-template-columns: repeat(3, 50px);
+    grid-template-columns: repeat(4, 50px);
     gap: 10px;
 }
 
