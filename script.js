@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                // Stop observing once animated to keep it visible
                 observer.unobserve(entry.target);
             }
         });
