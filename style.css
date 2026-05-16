@@ -635,7 +635,7 @@ a {
 
 .poster-grid {
     max-width: 1400px;
-    margin: 200px auto 100px auto;
+    margin: 40px auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
