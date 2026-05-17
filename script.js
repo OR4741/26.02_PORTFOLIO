@@ -124,7 +124,16 @@ document.addEventListener('DOMContentLoaded', () => {
             posterTrack.style.transform = `translateX(-${moveAmount}px)`;
         }
 
-        prevPosterBtn.addEventListener('click', () => {
+        function moveSliderNext() {
+            if (isTransitioning) return;
+            const itemsPerView = window.innerWidth <= 1024 ? 1 : 3;
+            
+            isTransitioning = true;
+            currentPosterIndex += itemsPerView;
+            updatePosterSlider(true);
+        }
+
+        function moveSliderPrev() {
             if (isTransitioning) return;
             const itemsPerView = window.innerWidth <= 1024 ? 1 : 3;
             
@@ -137,16 +146,10 @@ document.addEventListener('DOMContentLoaded', () => {
             isTransitioning = true;
             currentPosterIndex -= itemsPerView;
             updatePosterSlider(true);
-        });
+        }
 
-        nextPosterBtn.addEventListener('click', () => {
-            if (isTransitioning) return;
-            const itemsPerView = window.innerWidth <= 1024 ? 1 : 3;
-            
-            isTransitioning = true;
-            currentPosterIndex += itemsPerView;
-            updatePosterSlider(true);
-        });
+        prevPosterBtn.addEventListener('click', moveSliderPrev);
+        nextPosterBtn.addEventListener('click', moveSliderNext);
 
         posterTrack.addEventListener('transitionend', (e) => {
             if (e.target !== posterTrack) return;
@@ -188,9 +191,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (Math.abs(diff) > swipeThreshold) {
                 if (diff > 0) {
-                    nextPosterBtn.click();
+                    moveSliderNext();
                 } else {
-                    prevPosterBtn.click();
+                    moveSliderPrev();
                 }
                 
                 // Fallback to unlock transitioning state in case transitionend fails
@@ -198,6 +201,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     isTransitioning = false;
                 }, 600); // 0.5s transition + 100ms buffer
             }
+        }, {passive: true});
+
+        posterTrack.addEventListener('touchcancel', () => {
+            isTouching = false;
         }, {passive: true});
 
         window.addEventListener('resize', () => {

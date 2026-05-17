@@ -698,6 +698,8 @@ a {
     flex-shrink: 0;
     height: auto;
     object-fit: contain;
+    -webkit-user-drag: none;
+    user-select: none;
 }
 
 .banner-img {
