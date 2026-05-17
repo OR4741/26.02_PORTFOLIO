@@ -163,12 +163,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Touch events for mobile swipe
         let touchStartX = 0;
+        let touchStartY = 0;
         let touchEndX = 0;
         let isTouching = false;
 
         posterTrack.addEventListener('touchstart', e => {
             touchStartX = e.touches[0].clientX;
-            touchEndX = touchStartX; // Initialize to prevent old values triggering swipe
+            touchStartY = e.touches[0].clientY;
+            touchEndX = touchStartX;
             isTouching = true;
             
             const swipeIndicator = document.getElementById('swipeIndicator');
@@ -180,7 +182,16 @@ document.addEventListener('DOMContentLoaded', () => {
         posterTrack.addEventListener('touchmove', e => {
             if (!isTouching) return;
             touchEndX = e.touches[0].clientX;
-        }, {passive: true});
+            const touchCurrentY = e.touches[0].clientY;
+            
+            const diffX = Math.abs(touchStartX - touchEndX);
+            const diffY = Math.abs(touchStartY - touchCurrentY);
+            
+            // If movement is mostly horizontal, prevent page scrolling
+            if (diffX > diffY && e.cancelable) {
+                e.preventDefault();
+            }
+        }, {passive: false}); // Must be false to allow preventDefault
 
         posterTrack.addEventListener('touchend', e => {
             if (!isTouching) return;
