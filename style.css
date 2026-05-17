@@ -905,9 +905,9 @@ a {
         color: var(--accent);
     }
     #prevPosterBtn {
-        left: 4%;
+        left: 5%;
     }
     #nextPosterBtn {
-        right: 4%;
+        right: 5%;
     }
 }
