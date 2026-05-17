@@ -903,7 +903,7 @@ a {
         opacity: 1;
         background-color: transparent;
         color: var(--accent);
-        font-size: 3rem; /* 포스터 슬라이드 버튼 크기 조절 */
+        font-size: 4rem; /* 포스터 슬라이드 버튼 크기 조절 */
         width: 80px;
         height: 80px;
     }
