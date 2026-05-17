@@ -165,37 +165,6 @@ document.addEventListener('DOMContentLoaded', () => {
             updatePosterSlider(false);
         });
         
-        // Touch events for mobile swipe
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        posterTrack.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        posterTrack.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }, { passive: true });
-
-        function handleSwipe() {
-            if (isTransitioning) return;
-            
-            const swipeThreshold = 50;
-            const diffX = touchStartX - touchEndX;
-
-            // Only enable swipe on mobile/tablet view
-            if (window.innerWidth <= 1024) {
-                if (diffX > swipeThreshold) {
-                    // Swiped left
-                    nextPosterBtn.click();
-                } else if (diffX < -swipeThreshold) {
-                    // Swiped right
-                    prevPosterBtn.click();
-                }
-            }
-        }
-
         // Setup initial dimensions after a tiny delay for images/layout to render
         setTimeout(() => updatePosterSlider(false), 100);
     }
