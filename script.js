@@ -148,7 +148,8 @@ document.addEventListener('DOMContentLoaded', () => {
             updatePosterSlider(true);
         });
 
-        posterTrack.addEventListener('transitionend', () => {
+        posterTrack.addEventListener('transitionend', (e) => {
+            if (e.target !== posterTrack) return;
             isTransitioning = false;
             
             if (currentPosterIndex >= realTotalItems) {
@@ -160,22 +161,42 @@ document.addEventListener('DOMContentLoaded', () => {
         // Touch events for mobile swipe
         let touchStartX = 0;
         let touchEndX = 0;
+        let isTouching = false;
 
         posterTrack.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
+            touchStartX = e.touches[0].clientX;
+            touchEndX = touchStartX; // Initialize to prevent old values triggering swipe
+            isTouching = true;
+            
             const swipeIndicator = document.getElementById('swipeIndicator');
             if (swipeIndicator) {
                 swipeIndicator.style.display = 'none';
             }
         }, {passive: true});
 
+        posterTrack.addEventListener('touchmove', e => {
+            if (!isTouching) return;
+            touchEndX = e.touches[0].clientX;
+        }, {passive: true});
+
         posterTrack.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            const swipeThreshold = 50;
-            if (touchEndX < touchStartX - swipeThreshold) {
-                nextPosterBtn.click();
-            } else if (touchEndX > touchStartX + swipeThreshold) {
-                prevPosterBtn.click();
+            if (!isTouching) return;
+            isTouching = false;
+            
+            const swipeThreshold = 40;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    nextPosterBtn.click();
+                } else {
+                    prevPosterBtn.click();
+                }
+                
+                // Fallback to unlock transitioning state in case transitionend fails
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 600); // 0.5s transition + 100ms buffer
             }
         }, {passive: true});
 

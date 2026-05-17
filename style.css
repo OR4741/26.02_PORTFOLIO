@@ -684,6 +684,7 @@ a {
     overflow: hidden;
     width: 100%;
     position: relative;
+    touch-action: pan-y;
 }
 
 .poster-track {
@@ -837,6 +838,9 @@ a {
     }
     .poster-slide {
         width: 100%;
+    }
+    .slider-nav-btn {
+        display: none !important;
     }
     .swipe-indicator {
         display: flex;
