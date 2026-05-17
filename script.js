@@ -124,16 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
             posterTrack.style.transform = `translateX(-${moveAmount}px)`;
         }
 
-        function moveSliderNext() {
-            if (isTransitioning) return;
-            const itemsPerView = window.innerWidth <= 1024 ? 1 : 3;
-            
-            isTransitioning = true;
-            currentPosterIndex += itemsPerView;
-            updatePosterSlider(true);
-        }
-
-        function moveSliderPrev() {
+        prevPosterBtn.addEventListener('click', () => {
             if (isTransitioning) return;
             const itemsPerView = window.innerWidth <= 1024 ? 1 : 3;
             
@@ -146,13 +137,18 @@ document.addEventListener('DOMContentLoaded', () => {
             isTransitioning = true;
             currentPosterIndex -= itemsPerView;
             updatePosterSlider(true);
-        }
+        });
 
-        prevPosterBtn.addEventListener('click', moveSliderPrev);
-        nextPosterBtn.addEventListener('click', moveSliderNext);
+        nextPosterBtn.addEventListener('click', () => {
+            if (isTransitioning) return;
+            const itemsPerView = window.innerWidth <= 1024 ? 1 : 3;
+            
+            isTransitioning = true;
+            currentPosterIndex += itemsPerView;
+            updatePosterSlider(true);
+        });
 
-        posterTrack.addEventListener('transitionend', (e) => {
-            if (e.target !== posterTrack) return;
+        posterTrack.addEventListener('transitionend', () => {
             isTransitioning = false;
             
             if (currentPosterIndex >= realTotalItems) {
@@ -160,63 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 updatePosterSlider(false);
             }
         });
-
-        // Touch events for mobile swipe
-        let touchStartX = 0;
-        let touchStartY = 0;
-        let touchEndX = 0;
-        let isTouching = false;
-
-        posterTrack.addEventListener('touchstart', e => {
-            touchStartX = e.touches[0].clientX;
-            touchStartY = e.touches[0].clientY;
-            touchEndX = touchStartX;
-            isTouching = true;
-            
-            const swipeIndicator = document.getElementById('swipeIndicator');
-            if (swipeIndicator) {
-                swipeIndicator.style.display = 'none';
-            }
-        }, {passive: true});
-
-        posterTrack.addEventListener('touchmove', e => {
-            if (!isTouching) return;
-            touchEndX = e.touches[0].clientX;
-            const touchCurrentY = e.touches[0].clientY;
-            
-            const diffX = Math.abs(touchStartX - touchEndX);
-            const diffY = Math.abs(touchStartY - touchCurrentY);
-            
-            // If movement is mostly horizontal, prevent page scrolling
-            if (diffX > diffY && e.cancelable) {
-                e.preventDefault();
-            }
-        }, {passive: false}); // Must be false to allow preventDefault
-
-        posterTrack.addEventListener('touchend', e => {
-            if (!isTouching) return;
-            isTouching = false;
-            
-            const swipeThreshold = 40;
-            const diff = touchStartX - touchEndX;
-
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0) {
-                    moveSliderNext();
-                } else {
-                    moveSliderPrev();
-                }
-                
-                // Fallback to unlock transitioning state in case transitionend fails
-                setTimeout(() => {
-                    isTransitioning = false;
-                }, 600); // 0.5s transition + 100ms buffer
-            }
-        }, {passive: true});
-
-        posterTrack.addEventListener('touchcancel', () => {
-            isTouching = false;
-        }, {passive: true});
 
         window.addEventListener('resize', () => {
             isTransitioning = false;
