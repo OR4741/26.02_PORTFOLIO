@@ -899,4 +899,7 @@ a {
     .nav-links a {
     font-size: 0.75rem;
     }
+    .slider-nav-btn {
+        display: none;
+    }
 }
