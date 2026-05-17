@@ -676,9 +676,14 @@ a {
     right: calc(5% + 40px);
 }
 
+.swipe-indicator {
+    display: none;
+}
+
 .poster-slider-container {
     overflow: hidden;
     width: 100%;
+    position: relative;
 }
 
 .poster-track {
@@ -832,6 +837,49 @@ a {
     }
     .poster-slide {
         width: 100%;
+    }
+    .swipe-indicator {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        z-index: 20;
+        pointer-events: none;
+        opacity: 0;
+    }
+    .poster-slider-section.visible .swipe-indicator {
+        animation: showAndFade 3s ease-in-out 0.5s forwards;
+    }
+    .swipe-icon-animation {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        animation: swipeLeftRight 1.5s ease-in-out infinite;
+    }
+    .swipe-icon-animation p {
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        margin: 0;
+    }
+    @keyframes swipeLeftRight {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-15px); }
+        75% { transform: translateX(15px); }
+    }
+    @keyframes showAndFade {
+        0% { opacity: 0; }
+        15% { opacity: 1; }
+        85% { opacity: 1; }
+        100% { opacity: 0; visibility: hidden; }
     }
     .p1-bottom-grid {
         grid-template-columns: 1fr;

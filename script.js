@@ -157,6 +157,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Touch events for mobile swipe
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        posterTrack.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+            const swipeIndicator = document.getElementById('swipeIndicator');
+            if (swipeIndicator) {
+                swipeIndicator.style.display = 'none';
+            }
+        }, {passive: true});
+
+        posterTrack.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            const swipeThreshold = 50;
+            if (touchEndX < touchStartX - swipeThreshold) {
+                nextPosterBtn.click();
+            } else if (touchEndX > touchStartX + swipeThreshold) {
+                prevPosterBtn.click();
+            }
+        }, {passive: true});
+
         window.addEventListener('resize', () => {
             isTransitioning = false;
             if (currentPosterIndex >= realTotalItems) {
