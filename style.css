@@ -914,11 +914,3 @@ a {
         right: 5%;
     }
 }
-
-@media (min-width: 768px) and (max-width: 1024px) {
-    .slider-nav-btn {
-        font-size: 5rem;
-        width: 100px;
-        height: 100px;
-    }
-}
